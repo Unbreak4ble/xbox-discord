@@ -82,7 +82,7 @@ module.exports.run = async (client, message, args) => {
 			console.log(err)
 			try {
 				if (err.toLowerCase().includes('invalid token.')) {
-					message.channel.send('Falha, tente novamente.');
+					message.channel.send('Failed, please try again.');
 
 					const token = await provideToken();
 
@@ -97,7 +97,7 @@ module.exports.run = async (client, message, args) => {
 		}
 	} else {
 		console.log('providing new token...');
-		message.channel.send('Falha, tente novamente');
+		message.channel.send('Failed, please try again');
 
 		const token = await provideToken();
 
