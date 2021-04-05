@@ -6,3 +6,7 @@ Use this as a command.
 
 ## proPrint.js
 Responsible for creating the image.
+
+# Result
+Expected example:
+<img src="https://i.postimg.cc/PqCKKDmC/xbox-profile.png">
