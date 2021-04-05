@@ -10,9 +10,10 @@ function provideToken() {
 	return new Promise(async resolve => {
 
 		const token = await xl.Token(
-			process.env.xl_email.toString(),
-			process.env.xl_password.toString()
+			"<email>",
+			"<password>"
 		);
+                //Hide your email and password.
 
 		resolve(token);
 	});
