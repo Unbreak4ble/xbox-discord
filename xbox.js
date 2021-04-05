@@ -1,6 +1,6 @@
 const xl = require('app-xbox-live');
 const dc = require('discord.js');
-const Database = require("<database>");
+const db = require("<database>");
 //Use a secure database that does not expose data.
 
 const proPrint = require("./proPrint.js");
