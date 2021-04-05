@@ -20,6 +20,8 @@ module.exports.run = async(message, args) => {
 	let imageUrl = `http://images-eds.xboxlive.com/image?url=${imagePre}&format=png`
 
 
+  let gms = await Canvas.loadImage("./gamerscore.png");
+  
 	let x = 512;
 	let y = 900;
 	
@@ -36,10 +38,11 @@ module.exports.run = async(message, args) => {
 	imagectx.fillStyle = colorBack;
 	imagectx.fillRect(0, 0, x, y);
 
-        imagectx.fillStyle = "white";
+imagectx.fillStyle = "white";
 	imagectx.font = '30px "ArSaSe"';
 
-
+	//	imagectx.drawImage(bg, 0, 0, 100, 100);
+	
 	const wcText = gamertag;
 	const width = imagectx.measureText(wcText).width;
 	
@@ -74,7 +77,7 @@ imagectx.fillStyle = "grey";
 
 	imagectx.fillText("Info", (x - width1)/2, 80);
 
- 
+  //imagectx.fillRect(150,50,150,50);
   
   
   
@@ -87,10 +90,13 @@ imagectx.fillStyle = "grey";
   if(username && username !== ""){
   imagectx.fillText(username, 25, 150)
   
-  imagectx.fillText(score, 25, 190);
-  }else
-  imagectx.fillText(score, 25, 150);
+  imagectx.drawImage(gms, 15, 165, 30, 30);
+  imagectx.fillText(score, 50, 190);
+  }else{
   
+  imagectx.drawImage(gms, 15, 125, 30, 30);
+  imagectx.fillText(score, 50, 150);
+  }
   
   
   imagectx.globalAlpha = 0.7;
@@ -116,17 +122,25 @@ imagectx.fillStyle = "grey";
 	imagectx.fillText(line, 25, width2);
 	width2+=30;
 	}
-
+	
+	
 	imagectx.clip();
+
+
   
+  
+ //imagectx.fillRect(100, 220, 300, 300);
+ 
 	imagectx.fillStyle = "black";
   imagectx.drawImage(bg, 70, 200, 360, 360);
   
- 
+ // imagectx.drawImage(bg, 10, 20, 100, 100);
+  
   
 	const xlp = new Discord.MessageAttachment(image.toBuffer(), 'xbox_profile.png'); 
 	
 	
 	message.channel.send(xlp);
+  
 	}catch(err){console.log(err)}
 }
