@@ -7,6 +7,11 @@ Use this as a command.
 ## proPrint.js
 Responsible for creating the image.
 
-# Result
+# Commands
+
+
+## find
+Example: <prefix>xbox find DiegoGamer400
+#### Result
 Expected example:
 <img src="https://i.postimg.cc/PqCKKDmC/xbox-profile.png">
