@@ -1,5 +1,5 @@
 # xbox profile lib for discord bot
-With this piece you can view an Xbox Live user's data by image. Use this mini library for your discord bot 
+With this lib you can view an Xbox Live user's data by image. all results are based on images.
 
 # required modules
 - app-xbox-live
