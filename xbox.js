@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args) => {
 	
 			if (text.length) {
 		
-				if (args[0] === 'find') {
+				if (args[0] === 'profile') {
 					let ad = {};
 					const result = await xlj.people.find(text, 1);
 					
