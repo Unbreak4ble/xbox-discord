@@ -3,7 +3,8 @@ const dc = require('discord.js');
 const db = require("<database>");
 //Use a secure database that does not expose data.
 
-const proPrint = require("./proPrint.js");
+const proPrint = require("./utils/proPrint.js");
+const acPrint = require("./utils/acPrint.js");
 
 
 function provideToken() {
