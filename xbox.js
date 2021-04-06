@@ -39,7 +39,7 @@ module.exports.run = async (client, message, args) => {
 					
 	
 					if(result.people.length <= 0){
-					message.channel.send("Nada encontrado")
+					message.channel.send("Player not found.")
 						return;
 					}
 
@@ -84,7 +84,7 @@ module.exports.run = async (client, message, args) => {
 					
 	
 					if(result.people.length <= 0){
-					message.channel.send("Nada encontrado")
+					message.channel.send("Player not found.")
 						return;
 					}
           
