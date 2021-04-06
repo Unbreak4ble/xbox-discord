@@ -10,8 +10,12 @@ Responsible for creating the image.
 # Commands
 
 
-## find
-Example: <prefix>xbox find DiegoGamer400
+## profile
+Example: <prefix>xbox profile DiegoGamer400
 #### Result
-Expected example:
-<img src="https://i.postimg.cc/PqCKKDmC/xbox-profile.png">
+[![xbox-profile.png](https://i.postimg.cc/x8G9fb03/xbox-profile.png)](https://postimg.cc/MfGCtHfn)
+
+## presence
+Example: <prefix>xbox presence Aguiarbr8243
+### Result
+[![xbox-presence.png](https://i.postimg.cc/1zLSDKXK/xbox-presence.png)](https://postimg.cc/KKrC2BnK)
