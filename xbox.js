@@ -117,9 +117,14 @@ module.exports.run = async (client, message, args) => {
             		let dn = user[0].devices.length - 1;
             		let tn = user[0].devices[dn].titles.length - 1;
             		
-            		let titlepre = user[0].devices[dn].titles[tn].name;
+            		let titlepre = user[0].devices[dn].titles[tn];
             		
-            		opts["lastSeen"] = titlepre;
+            		
+            		if(titlepre["activity"] && titlepre["activity"]["richPresence"])
+            		opts["lastSeen"] = titlepre.name + " - " + titlepre.activity.richPresence;
+            		else
+            		opts["lastSeen"] = titlepre.name;
+           
             	}else
               opts["lastSeen"] = user[0].state;
             }else{
