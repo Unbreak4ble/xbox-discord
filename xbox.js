@@ -77,6 +77,132 @@ module.exports.run = async (client, message, args) => {
 			 });
 					
 				}
+                                else if (args[0] === "presence")
+				{
+					
+				const result = await xlj.people.find(text, 1);
+					
+	
+					if(result.people.length <= 0){
+					message.channel.send("Nada encontrado")
+						return;
+					}
+          
+					const xuid = result.people[0];
+					
+					
+					xlj.people.presence.get(xuid.xuid).then(async user =>{
+						
+						let opts = {
+							gamertag: xuid.gamertag
+						}
+						
+						if(xuid["realName"])
+						opts["name"] = xuid.realName;
+						else
+            opts["name"] = "";
+            
+         
+            
+            opts["image"] = xuid.displayPicRaw;
+            
+            opts["state"] = user[0].state;
+            
+            try{
+            if(user[0].state.toLowerCase() !== "offline"){
+            	if(user[0]["devices"]){
+           // 		message.channel.send(JSON.stringify(user[0]));
+            		
+            		let dn = user[0].devices.length - 1;
+            		let tn = user[0].devices[dn].titles.length - 1;
+            		
+            		let titlepre = user[0].devices[dn].titles[tn].name;
+            		
+            		opts["lastSeen"] = titlepre;
+            	}else
+              opts["lastSeen"] = user[0].state;
+            }else{
+            if(user[0]["lastSeen"]){
+            	
+            if(user[0].lastSeen["timestamp"]){
+            	
+      	function timeDistance(date1, date2){
+  let distance = Math.abs(date1 - date2);
+  const hours = Math.floor(distance / 3600000);
+  distance -= hours * 3600000;
+  const minutes = Math.floor(distance / 60000);
+  distance -= minutes * 60000;
+  const seconds = Math.floor(distance / 1000);
+
+ if(hours > 24)
+  return {
+  num: Math.floor(hours/24),
+  type: "day"
+  }
+  else if(hours > 0 && hours <= 24)
+  return {
+  num: hours.toString(),
+  type: "hour"
+  }
+  else if(hours <= 0)
+  return {
+  num: ('0' + minutes).slice(-2),
+  type: "minute"
+  }
+  else if(minutes <=0)
+  return {
+  num: ('0' + seconds).slice(-2),
+  type: "second"
+  }
+  else if(seconds <= 0)
+  return {
+  	num: ('0' + seconds).slice(-2),
+  	type: "mili"
+  }
+  else
+  return {
+  num: "0",
+  type: "second"
+  }
+};
+            	
+            let gtime = timeDistance(Number(new Date(user[0].lastSeen.timestamp)), new Date)
+           let time = "";
+           if(gtime.type === "day")
+           time = ` ${gtime.num}d ago`;
+           else if(gtime.type === "hour")
+           time = ` ${gtime.num}h ago`;
+          else if(gtime.type === "minute")
+           time = ` ${gtime.num}m ago`;
+          else if(gtime.type === "second")
+           time = ` ${gtime.num}s ago`;
+          else if(gtime.type === "mili")
+           time = ` ${gtime.num}mm ago`;
+            	
+            	
+            	
+            	
+            	
+            	opts["lastSeen"] = "Last seen"+time+": "+user[0].lastSeen.titleName;
+         
+         
+            }else{
+            	opts["lastSeen"] = "Last seen: "+user[0].lastSeen.titleName;
+            }
+            	
+            }else{
+            opts["lastSeen"] = user[0].state;
+            }
+            }
+            }catch(err4){
+            	opts["lastSeen"] = user[0].state;
+            	console.log(err4)
+            }
+            
+						acPrint.run(message, opts);
+					});
+				
+				}
 			}
 		} catch (err) {
 			console.log(err)
