@@ -15,12 +15,16 @@ module.exports.run = async(message, args) => {
 	let bio = args.bio;
 	let address = args.address;
 	
+	
 	let imagePre = args.image.match(/url=.*?&/g)[0].replace(/url=/g, '').replace(/&$/g, '');
+	
+
 	
 	let imageUrl = `http://images-eds.xboxlive.com/image?url=${imagePre}&format=png`
 
-
   let gms = await Canvas.loadImage("./gamerscore.png");
+
+
   
 	let x = 512;
 	let y = 900;
@@ -32,7 +36,10 @@ module.exports.run = async(message, args) => {
 	let image = Canvas.createCanvas(x, y);
 	let imagectx = image.getContext('2d');
 	
-	let bg = await Canvas.loadImage(imageUrl);
+	let bg;
+	try{
+		bg = await Canvas.loadImage(imageUrl);
+	}catch{};
 	
 
 	imagectx.fillStyle = colorBack;
@@ -132,6 +139,7 @@ imagectx.fillStyle = "grey";
  //imagectx.fillRect(100, 220, 300, 300);
  
 	imagectx.fillStyle = "black";
+	if(bg)
   imagectx.drawImage(bg, 70, 200, 360, 360);
   
  // imagectx.drawImage(bg, 10, 20, 100, 100);
