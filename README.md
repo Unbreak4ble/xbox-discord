@@ -5,6 +5,7 @@ With this lib you can view an Xbox Live user's data by image. all results are ba
 - app-xbox-live
 - canvas
 - discord.js
+- (a good database)
 
 # Commands
 
